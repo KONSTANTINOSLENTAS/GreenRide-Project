@@ -1,0 +1,173 @@
+.card-nav-container {
+    position: absolute;
+    top: 2em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+    z-index: 999; /* High Z-index to sit on top of everything */
+    box-sizing: border-box;
+}
+
+.card-nav {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.card-nav.open {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* --- TOP BAR --- */
+.card-nav-top {
+    /* FIXED: Added relative positioning so children anchor to THIS, not the whole card */
+    position: relative;
+
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 2;
+    background: inherit;
+    flex-shrink: 0;
+}
+
+/* --- HAMBURGER --- */
+.hamburger-menu {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger-line {
+    width: 24px;
+    height: 2px;
+    background-color: currentColor;
+    transition: transform 0.3s ease;
+    border-radius: 2px;
+}
+
+.hamburger-menu.open .hamburger-line:first-child {
+    transform: translateY(4px) rotate(45deg);
+}
+
+.hamburger-menu.open .hamburger-line:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+}
+
+.logo-container {
+    /* This now centers relative to the 70px Top Bar */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    pointer-events: none;
+}
+/* New style for the text */
+.nav-logo-text {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.5rem;    /* Big text */
+    font-weight: 800;     /* Extra Bold */
+    letter-spacing: -1px; /* Tight spacing looks modern */
+    color: #2ecc71;       /* GreenRide Green */
+}
+.card-nav-cta-button {
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* --- ANIMATION MAGIC: CSS GRID --- */
+.card-nav-grid-wrapper {
+    display: grid;
+    grid-template-rows: 0fr; /* Default: Collapsed */
+    transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-nav.open .card-nav-grid-wrapper {
+    grid-template-rows: 1fr; /* Open: Full Height */
+}
+
+.card-nav-content-inner {
+    overflow: hidden;
+}
+
+/* --- CARDS LAYOUT --- */
+.card-nav-items {
+    padding: 10px 10px 20px 10px;
+    display: flex;
+    gap: 10px;
+    min-height: 200px; /* Ensure cards have space */
+}
+
+.nav-card {
+    flex: 1;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0; /* Prevent flex overflow */
+}
+
+.nav-card-label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.nav-card-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.nav-card-link {
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.95rem;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: opacity 0.2s;
+}
+
+.nav-card-link:hover {
+    opacity: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .card-nav-items {
+        flex-direction: column;
+    }
+    .nav-card {
+        min-height: 120px;
+    }
+
+
+
+
+}

@@ -9,10 +9,8 @@ function Login() {
     const [isRegistering, setIsRegistering] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    // --- NEW STATES ---
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    // -----------------
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
@@ -23,15 +21,13 @@ function Login() {
         try {
             if (isRegistering) {
 
-                // --- CRITICAL CLIENT-SIDE VALIDATION FIX ---
                 const phoneRegex = /^\d{10}$/;
                 if (!phoneRegex.test(phoneNumber)) {
                     setError("Phone number must be exactly 10 digits.");
                     return; // Stop the form submission
                 }
-                // -------------------------------------------
 
-                // --- REGISTER LOGIC: Sending ALL necessary fields ---
+                // REGISTER LOGIC
                 await api.post('/auth/register', {
                     username,
                     password,
@@ -40,7 +36,7 @@ function Login() {
                 });
                 setIsRegistering(false);
             } else {
-                // --- LOGIN LOGIC ---
+                //  LOGIN LOGIC 
                 const response = await api.post('/auth/login', { username, password });
                 localStorage.setItem('token', response.data.token);
                 navigate('/home');
@@ -54,7 +50,6 @@ function Login() {
 
     return (
         <div className="landing-container">
-            {/* LEFT SIDE: Animations (Unchanged visuals) */}
             <div className="landing-info">
                 <div style={{ position: 'relative', height: '120px', marginBottom: '130px' }}>
                     <TextPressure
@@ -69,7 +64,6 @@ function Login() {
                         minFontSize={36}
                     />
                 </div>
-                {/* ... (BlurText descriptions remain the same) ... */}
                 <div style={{ marginTop: '20px' }}>
                     <BlurText
                         text="Join the university carpooling revolution. Save money, meet new friends, and reduce your carbon footprint—one ride at a time."
@@ -138,7 +132,6 @@ function Login() {
                                 </div>
                             </>
                         )}
-                        {/* ---------------------------------- */}
 
                         <div className="form-group">
                             <label>Password</label>

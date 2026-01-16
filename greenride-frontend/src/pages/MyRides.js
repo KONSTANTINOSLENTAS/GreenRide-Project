@@ -66,7 +66,7 @@ function MyRides() {
                 fetchRides();
             } catch (error) {
                 const errMsg = error.response?.data?.message || error.response?.data || "An unexpected error occurred.";
-                alert(`Operation Failed: ${errMsg}`); // Use simple alert for failure
+                alert(`Operation Failed: ${errMsg}`); 
             }
         }
     };
@@ -94,7 +94,7 @@ function MyRides() {
         confirmAction(message, action, isLate);
     };
 
-    // --- PASSENGER CANCELLATION LOGIC (Refactored to use Modal) ---
+    //  PASSENGER CANCELLATION LOGIC (
     const handleCancelBooking = (e, rideId, departureTime, costPerSeat) => {
         if (e) e.stopPropagation();
 
@@ -105,7 +105,6 @@ function MyRides() {
 
         const action = async () => {
             const res = await api.post(`/routes/${rideId}/cancel-booking`);
-            // Success is handled by executeCancellation + refresh
         };
 
         const message = isLate
@@ -114,7 +113,6 @@ function MyRides() {
 
         confirmAction(message, action, isLate);
     };
-    // -------------------------------------------------------------
 
 
 
@@ -165,7 +163,7 @@ function MyRides() {
             </div>
         );
     };
-    // --------------------------------------------------------
+    
 
 
     return (

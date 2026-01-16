@@ -17,7 +17,6 @@ body {
   width: 100%;
 }
 
-/* Left Side - The Brand */
 .landing-info {
   flex: 1;
   background: linear-gradient(135deg, #2ecc71, #27ae60); /* Green Gradient */
@@ -66,7 +65,7 @@ body {
   padding: 40px;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Soft shadow */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
 }
 
 .login-card h2 {
@@ -92,7 +91,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 1rem;
-  box-sizing: border-box; /* Ensures padding doesn't break width */
+  box-sizing: border-box; 
   transition: border-color 0.3s;
 }
 
@@ -138,7 +137,7 @@ body {
   .landing-info h1 { font-size: 2rem; }
   .login-section { flex: 1; padding: 20px; }
 }
-/* Styling for the animated title */
+
 .landing-title {
   font-size: 3.5rem;
   font-weight: 700;

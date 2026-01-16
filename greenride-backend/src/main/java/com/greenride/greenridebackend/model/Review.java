@@ -1,6 +1,6 @@
 package com.greenride.greenridebackend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties; // <--- ADDED THIS IMPORT
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties; 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -15,13 +15,13 @@ public class Review {
     // The user writing the review
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
-    @JsonIgnoreProperties({"password", "routes", "reviews", "bookings"}) // <--- ADDED THIS
+    @JsonIgnoreProperties({"password", "routes", "reviews", "bookings"}) 
     private User author;
 
     // The user RECEIVING the review (the driver or passenger being rated)
     @ManyToOne
     @JoinColumn(name = "target_id", nullable = false)
-    @JsonIgnoreProperties({"password", "routes", "reviews", "bookings"}) // <--- ADDED THIS
+    @JsonIgnoreProperties({"password", "routes", "reviews", "bookings"}) 
     private User target;
 
     private Integer rating; // 1 to 5

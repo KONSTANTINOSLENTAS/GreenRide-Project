@@ -31,25 +31,20 @@ public class Route {
     @Column(nullable = false)
     private Double costPerSeat;
 
-    // Optional: Estimated duration from the external map service
+    //Estimated duration from the external map service
     private String estimatedDuration;
 
-    // --- NEW: Vehicle Details ---
     private String vehicleBrand;
     private String vehicleModel;
-    // ----------------------------
 
     private String status = "SCHEDULED"; // SCHEDULED, IN_PROGRESS, COMPLETED
 
     private LocalDateTime actualArrivalTime; // To calculate delays
-    private Double durationMin; // Add this field
-    private LocalDateTime actualDepartureTime; // NEW FIELD
+    private Double durationMin; 
+    private LocalDateTime actualDepartureTime; 
 
-    // --- NEW FIELD FOR STATS ---
     private Double distanceKm;
-    // ---------------------------
 
-    // --- Constructors ---
 
     public Route() {
     }
@@ -63,7 +58,6 @@ public class Route {
         this.costPerSeat = costPerSeat;
     }
 
-    // --- Getters and Setters ---
 
     public Long getId() {
         return id;
@@ -147,7 +141,7 @@ public class Route {
     public String getVehicleModel() { return vehicleModel; }
     public void setVehicleModel(String vehicleModel) { this.vehicleModel = vehicleModel; }
 
-    // --- NEW Getter & Setter for Distance ---
+    //  Getter & Setter for Distance
     public Double getDistanceKm() { return distanceKm; }
     public void setDistanceKm(Double distanceKm) { this.distanceKm = distanceKm; }
 }

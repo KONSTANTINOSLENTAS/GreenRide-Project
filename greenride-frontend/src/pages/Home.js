@@ -35,7 +35,7 @@ function Home() {
 
     const [uploads, setUploads] = useState({ license: false, registration: false });
 
-    //  PRELOADED UNIVERSITY ADDRESS
+    //  PRELOADED UNIVERSITY ADDRESS.
     const setUniversity = (field) => {
         setFormData(prev => ({ ...prev, [field]: "Omirou 9, Tavros" }));
     };
@@ -52,7 +52,6 @@ function Home() {
         if (token) {
             try {
                 const decoded = jwtDecode(token);
-                // Robust Role Detection
                 let rawRole = decoded.role || decoded.roles || decoded.authorities || 'USER';
                 if (Array.isArray(rawRole)) {
                     rawRole = (rawRole[0] && typeof rawRole[0] === 'object') ? rawRole[0].authority : rawRole[0];

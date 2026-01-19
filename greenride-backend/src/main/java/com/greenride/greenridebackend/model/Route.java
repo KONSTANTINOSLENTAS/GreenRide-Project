@@ -1,7 +1,6 @@
 package com.greenride.greenridebackend.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "routes")
@@ -11,10 +10,8 @@ public class Route {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Relationship: Many routes belong to One driver
-    @ManyToOne
-    @JoinColumn(name = "driver_id", nullable = false)
-    private User driver;
+    @Column(name = "driver_id")
+    private Long driverId;
 
     @Column(nullable = false)
     private String startLocation;
@@ -23,7 +20,7 @@ public class Route {
     private String destination;
 
     @Column(nullable = false)
-    private LocalDateTime departureTime;
+    private String departureTime;
 
     @Column(nullable = false)
     private Integer availableSeats;
@@ -31,33 +28,21 @@ public class Route {
     @Column(nullable = false)
     private Double costPerSeat;
 
-    //Estimated duration from the external map service
     private String estimatedDuration;
 
-    private String vehicleBrand;
-    private String vehicleModel;
-
-    private String status = "SCHEDULED"; // SCHEDULED, IN_PROGRESS, COMPLETED
-
-    private LocalDateTime actualArrivalTime; // To calculate delays
-    private Double durationMin; 
-    private LocalDateTime actualDepartureTime; 
-
-    private Double distanceKm;
-
+    private String status = "SCHEDULED";
 
     public Route() {
     }
 
-    public Route(User driver, String startLocation, String destination, LocalDateTime departureTime, Integer availableSeats, Double costPerSeat) {
-        this.driver = driver;
+    public Route(Long driverId, String startLocation, String destination, String departureTime, Integer availableSeats, Double costPerSeat) {
+        this.driverId = driverId;
         this.startLocation = startLocation;
         this.destination = destination;
         this.departureTime = departureTime;
         this.availableSeats = availableSeats;
         this.costPerSeat = costPerSeat;
     }
-
 
     public Long getId() {
         return id;
@@ -67,12 +52,12 @@ public class Route {
         this.id = id;
     }
 
-    public User getDriver() {
-        return driver;
+    public Long getDriverId() {
+        return driverId;
     }
 
-    public void setDriver(User driver) {
-        this.driver = driver;
+    public void setDriverId(Long driverId) {
+        this.driverId = driverId;
     }
 
     public String getStartLocation() {
@@ -91,11 +76,11 @@ public class Route {
         this.destination = destination;
     }
 
-    public LocalDateTime getDepartureTime() {
+    public String getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(LocalDateTime departureTime) {
+    public void setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
     }
 
@@ -123,25 +108,6 @@ public class Route {
         this.estimatedDuration = estimatedDuration;
     }
 
-    public Double getDurationMin() { return durationMin; }
-    public void setDurationMin(Double durationMin) { this.durationMin = durationMin; }
-
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
-
-    public LocalDateTime getActualArrivalTime() { return actualArrivalTime; }
-    public void setActualArrivalTime(LocalDateTime actualArrivalTime) { this.actualArrivalTime = actualArrivalTime; }
-
-    public LocalDateTime getActualDepartureTime() { return actualDepartureTime; }
-    public void setActualDepartureTime(LocalDateTime actualDepartureTime) { this.actualDepartureTime = actualDepartureTime; }
-
-    public String getVehicleBrand() { return vehicleBrand; }
-    public void setVehicleBrand(String vehicleBrand) { this.vehicleBrand = vehicleBrand; }
-
-    public String getVehicleModel() { return vehicleModel; }
-    public void setVehicleModel(String vehicleModel) { this.vehicleModel = vehicleModel; }
-
-    //  Getter & Setter for Distance
-    public Double getDistanceKm() { return distanceKm; }
-    public void setDistanceKm(Double distanceKm) { this.distanceKm = distanceKm; }
 }

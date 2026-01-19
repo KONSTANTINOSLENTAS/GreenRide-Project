@@ -35,7 +35,7 @@ function Home() {
 
     const [uploads, setUploads] = useState({ license: false, registration: false });
 
-    //  PRELOADED UNIVERSITY ADDRESS
+    //  PRELOADED UNIVERSITY ADDRESS.
     const setUniversity = (field) => {
         setFormData(prev => ({ ...prev, [field]: "Omirou 9, Tavros" }));
     };

@@ -24,7 +24,7 @@ function Login() {
                 const phoneRegex = /^\d{10}$/;
                 if (!phoneRegex.test(phoneNumber)) {
                     setError("Phone number must be exactly 10 digits.");
-                    return; // Stop the form submission
+                    return; //Stop the form submission
                 }
 
                 // REGISTER LOGIC

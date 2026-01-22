@@ -94,7 +94,7 @@ function Home() {
         } catch (error) {}
     };
 
-    // --- NAV ITEMS ---
+    //  NAV ITEMS 
     const navItems = useMemo(() => {
         const items = [
             {
@@ -203,7 +203,6 @@ function Home() {
                             {renderLocationInput('startLocation', 'Start Location')}
                             {renderLocationInput('destination', 'Destination')}
 
-                            {/* Remaining Fields */}
                             {['departureTime', 'availableSeats', 'costPerSeat'].map((field, i) => (
                                 <input
                                     key={i}
@@ -324,7 +323,7 @@ const styles = {
     cleanInput: { padding: '12px 15px', borderRadius: '8px', outline: 'none', width: '100%', boxSizing: 'border-box', fontSize: '1rem', marginBottom: '10px' },
     greenButton: { background: '#2ecc71', border: 'none', padding: '14px', borderRadius: '8px', color: 'white', fontWeight: 'bold', cursor: 'pointer', fontSize: '1rem', marginTop: '10px', boxShadow: '0 4px 10px rgba(46, 204, 113, 0.3)', transition: 'background 0.3s' },
 
-    // Style for he "Uni" button
+    // Style for he Uni button
     iconBtn: {
         background: 'transparent',
         border: '1px solid #ddd',
